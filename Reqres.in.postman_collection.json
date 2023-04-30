@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "9d3f2a89-2708-450f-ac6d-3eaa1add70d1",
+		"name": "Reqres.in",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21691855"
+	},
+	"item": [
+		{
+			"name": "Register successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"id\": {\"type\": \"integer\"},\r",
+							"    \"token\": {\"type\": \"string\"},\r",
+							"   }};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register unsuccessful_missing password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body matches error message\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Missing password\");\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"error\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"sydney@fife\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register unsuccessful_missing email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body matches error message\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Missing email or username\");\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"error\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"{{$randomWord}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login successful",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"token\": {\"type\": \"string\"},\r",
+							"   }};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login unsuccessful_missing password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body matches error message\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Missing password\");\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"error\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\": \"eve.holt@reqres.in\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login unsuccessful_missing email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body matches error message\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Missing email or username\");\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"error\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"password\": \"cityslicka\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/register",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\": {\r",
+							"    \"data\": {\r",
+							"    \"id\": {\"type\": \"integer\"}, \r",
+							"    \"email\": {\"type\": \"string\"},\r",
+							"    \"first_name\": {\"type\": \"string\"},\r",
+							"    \"last_name\": {\"type\": \"string\"},\r",
+							"    \"avatar\": {\"type\": \"string\"}},\r",
+							"    \"support\": {\r",
+							"    \"url\": {\"type\": \"string\"},\r",
+							"    \"text\": {\"type\": \"string\"}},\r",
+							"}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"\"type\": \"object\", \"properties\": {\r",
+							"\"page\": {\"type\": \"integer\"},\r",
+							"\"per_page\": {\"type\": \"integer\"},\r",
+							"\"total\": {\"type\": \"integer\"},\r",
+							"\"total_pages\": {\"type\": \"integer\"},\r",
+							"\"data\": {\r",
+							"\"type\": \"array\", \"properties\":\r",
+							"{\"id\": {\"type\": \"integer\"},\r",
+							"\"email\": {\"type\": \"string\"},\r",
+							"\"first_name\": {\"type\": \"string\"},\r",
+							"\"last_name\": {\"type\": \"string\"},\r",
+							"\"avatar\": {\"type\": \"string\"}}}}};\r",
+							"pm.test(\"Schema is valid\", ()=> {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"UserId\", jsonData.id);\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"UserName\", jsonData.name);\r",
+							"pm.test(\"Successful POST request\", () => {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"name\": {\"type\": \"string\"},\r",
+							"    \"job\": {\"type\": \"string\"},\r",
+							"    \"id\": {\"type\": \"string\"},\r",
+							"    \"createdAt\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{$randomUserName}}\",\r\n    \"job\": \"tester\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"name\": {\"type\": \"string\"},\r",
+							"    \"job\": {\"type\": \"string\"},\r",
+							"    \"updatedAt\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{UserName}}\",\r\n    \"job\": \"AQA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/{{UserId}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{UserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const schema = {\r",
+							"    \"type\": \"object\", \"properties\":{\r",
+							"    \"name\": {\"type\": \"string\"},\r",
+							"    \"surname\": {\"type\": \"string\"},\r",
+							"    \"job\": {\"type\": \"string\"},\r",
+							"    \"updatedAt\": {\"type\": \"string\"}}};\r",
+							"pm.test(\"Schema is valid\", () => {pm.response.to.have.jsonSchema(schema);});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{UserName}}\",\r\n    \"surname\": \"{{$randomLastName}}\",\r\n    \"job\": \"AQA\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/{{UserId}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{UserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/{{UserId}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{UserId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "UserId",
+			"value": ""
+		}
+	]
+}
