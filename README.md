@@ -1,3 +1,3 @@
 #### This repository contains Postman collections that are not trade secrets and are allowed for public display.
 #### You can view the Postman collections in the attached files or by clicking on the links below.
-[- Reqres.in.postman_collection](https://www.postman.com/interstellar-shadow-528909/workspace/github-n/collection/21691855-9d3f2a89-2708-450f-ac6d-3eaa1add70d1?action=share&creator=21691855)
+- [Reqres.in.postman_collection](https://www.postman.com/interstellar-shadow-528909/workspace/github-n/collection/21691855-9d3f2a89-2708-450f-ac6d-3eaa1add70d1?action=share&creator=21691855)
